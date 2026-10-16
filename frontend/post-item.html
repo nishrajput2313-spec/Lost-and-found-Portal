@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Post an Item — DPG Lost &amp; Found</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">DPG</span>
+      <span class="brand-text">
+        <span class="brand-college">DPG Institute of Technology and Management</span>
+        <span class="brand-sub">Lost &amp; Found Portal</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Browse</a>
+      <a href="post-item.html" class="active">Post Item</a>
+      <a href="my-posts.html">My Posts</a>
+      <span data-auth-slot><a href="login.html">Log In</a></span>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3 7 7 0 0021 12.8z"/></svg>
+      </button>
+      <button class="hamburger" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-panel">
+    <a href="index.html">Browse</a>
+    <a href="post-item.html">Post Item</a>
+    <a href="my-posts.html">My Posts</a>
+    <span data-auth-slot><a href="login.html">Log In</a></span>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container form-shell">
+    <div class="hero-eyebrow">New listing</div>
+    <h1 style="font-size:26px; margin-bottom:8px;">What happened?</h1>
+    <p style="color:var(--text-soft); font-size:14.5px; margin-bottom:24px;">Fill in as much detail as you can — it's what makes matching actually work.</p>
+
+    <div class="type-toggle" id="type-toggle">
+      <button type="button" class="active lost" data-type="lost">I lost something</button>
+      <button type="button" class="found" data-type="found">I found something</button>
+    </div>
+
+    <form id="post-form">
+      <div class="field">
+        <label for="title">Item name</label>
+        <input id="title" type="text" placeholder="e.g. Black Wildcraft Backpack" required />
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category">
+            <option>Electronics</option>
+            <option>Bags</option>
+            <option>ID Card</option>
+            <option>Accessories</option>
+            <option>Books &amp; Notes</option>
+            <option>Personal Items</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="location">Location</label>
+          <select id="location">
+            <option>Library</option>
+            <option>Canteen</option>
+            <option>Auditorium</option>
+            <option>Sports Ground</option>
+            <option>Hostel Block A</option>
+            <option>Hostel Block B</option>
+            <option>Admin Block</option>
+            <option>Parking Area</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="date">Date</label>
+          <input id="date" type="date" />
+        </div>
+        <div class="field">
+          <label for="time">Approx. time (optional)</label>
+          <input id="time" type="time" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="description">Description</label>
+        <textarea id="description" placeholder="Color, brand, any identifying marks or contents…"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Photo</label>
+        <div class="dropzone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 16.5V19a2 2 0 002 2h12a2 2 0 002-2v-2.5M16 8l-4-4-4 4M12 4v12"/></svg>
+          <div>Drag a photo here, or <strong>browse files</strong></div>
+        </div>
+        <input type="file" id="photo" accept="image/*" style="display:none;" />
+      </div>
+
+      <div class="field" id="verification-field">
+        <label>Verification questions <span style="font-weight:400; color:var(--slate-soft);">(only shown to someone claiming this item)</span></label>
+        <div id="qa-list">
+          <div class="qa-row">
+            <input type="text" placeholder="e.g. What color is the strap?" />
+            <button type="button" class="remove-qa" aria-label="Remove">×</button>
+          </div>
+        </div>
+        <button type="button" class="add-qa" id="add-qa">+ Add another question</button>
+        <div class="hint">Used when someone requests to claim this item — helps confirm it's really theirs before contact info is shared.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" style="width:100%; padding:13px;">Post item</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="foot-brand">DPG · LOST &amp; FOUND</span>
+    <span>Built by students, for students.</span>
+  </div>
+</footer>
+
+<script src="js/theme.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/api.js"></script>
+<script src="js/auth.js"></script>
+<script>
+  // Lost / Found toggle
+  const toggleBtns = document.querySelectorAll("#type-toggle button");
+  toggleBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      toggleBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
+  // Dropzone opens file picker, and shows the chosen filename
+  const dropzone = document.querySelector(".dropzone");
+  const photoInput = document.getElementById("photo");
+  dropzone.addEventListener("click", () => photoInput.click());
+  photoInput.addEventListener("change", () => {
+    if (photoInput.files[0]) {
+      dropzone.querySelector("div").innerHTML = `Selected: <strong>${photoInput.files[0].name}</strong>`;
+    }
+  });
+
+  // Add / remove verification question rows
+  document.getElementById("add-qa").addEventListener("click", () => {
+    const row = document.createElement("div");
+    row.className = "qa-row";
+    row.innerHTML = `<input type="text" placeholder="Another verifying detail…" /><button type="button" class="remove-qa" aria-label="Remove">×</button>`;
+    document.getElementById("qa-list").appendChild(row);
+  });
+  document.getElementById("qa-list").addEventListener("click", (e) => {
+    if (e.target.classList.contains("remove-qa")) {
+      e.target.closest(".qa-row").remove();
+    }
+  });
+
+  // Must be logged in to post — bounce to login.html otherwise
+  document.addEventListener("DOMContentLoaded", () => {
+    requireLogin("Please log in to post an item.");
+  });
+
+  document.getElementById("post-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!requireLogin("Please log in to post an item.")) return;
+
+    const type = document.querySelector("#type-toggle button.active").dataset.type;
+    const questions = Array.from(document.querySelectorAll("#qa-list input"))
+      .map((i) => i.value.trim())
+      .filter(Boolean);
+
+    const formData = new FormData();
+    formData.append("type", type);
+    formData.append("title", document.getElementById("title").value);
+    formData.append("category", document.getElementById("category").value);
+    formData.append("location", document.getElementById("location").value);
+    formData.append("date", document.getElementById("date").value);
+    formData.append("description", document.getElementById("description").value);
+    formData.append("verificationQuestions", JSON.stringify(questions));
+    if (photoInput.files[0]) formData.append("photo", photoInput.files[0]);
+
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Posting…";
+
+    try {
+      const item = await apiFetch("/items", { method: "POST", body: formData, isFormData: true, auth: true });
+      window.location.href = `item-detail.html?id=${item._id}`;
+    } catch (err) {
+      alert(err.message);
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Post item";
+    }
+  });
+</script>
+</body>
+</html>
