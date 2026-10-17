@@ -2,7 +2,7 @@
 // Central place to point the frontend at the backend.
 // Change API_BASE if your Express server runs somewhere else.
 // ---------------------------------------------------------------
-const API_BASE = "https://lost-found-portall-2.onrender.com/api";
+const API_BASE = "https://lost-found-portall-2.onrender.com";
 
 async function apiFetch(path, { method = "GET", body, isFormData = false, auth = false } = {}) {
   const headers = {};
